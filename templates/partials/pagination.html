@@ -1,0 +1,31 @@
+<div class="pagination d-flex justify-content-center">
+    <ul class="pagination">
+        {% if  paginated_content.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page=1{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}">&laquo;</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="?page={{  paginated_content.previous_page_number }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}">&lsaquo;</a>
+            </li>
+        {% endif %}
+        {% for num in  paginated_content.paginator.page_range %}
+            {% if  paginated_content.number == num %}
+                <li class="page-item active">
+                    <a class="page-link cor-onde-esta-a-paginacao" href="?page={{ num }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}">{{ num }}</a>
+                </li>
+            {% elif num >  paginated_content.number|add:'-3' and num <  paginated_content.number|add:'3' %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ num }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}">{{ num }}</a>
+                </li>
+            {% endif %}
+        {% endfor %}
+        {% if  paginated_content.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{  paginated_content.next_page_number }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}">&rsaquo;</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="?page={{  paginated_content.paginator.num_pages }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}">&raquo;</a>
+            </li>
+        {% endif %}
+    </ul>
+</div>

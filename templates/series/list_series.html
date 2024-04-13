@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block 'body' %}
+
+  <div id="series-list" class=" container ">
+    <div class="text-center">
+      <h1 class="texto">{% if letter %}Letra "{{ letter }}" - Series encontradas "{{ total_series }}" {% else %}Total de Series "{{ total_series }}" {% endif %}</h1>
+        <div class="row " style="margin-top: 200px;">
+
+          {% for serie in paginated_content %}
+            <div class="movie__item col-sm-3" id="search-results" data-carousel="item">
+              <a class="movie-carousel__link" href="{% url 'serie_detail' serie.id %}">
+                  <img class="movie-carousel__cover" src="{{ serie.image_thumb.url }}" alt="Capa do filme Movie Exemplo" />
+              </a>
+              
+              <h3 class="mt-5">{{ serie.name_serie }}</h3>
+            
+            </div>
+          {% endfor %}
+
+        </div>
+        
+        </div>
+    </div>
+
+    {% include 'partials/pagination.html' %}
+
+  </div>
+
+{% endblock %}

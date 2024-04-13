@@ -1,0 +1,287 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'body' %}
+
+
+<main>
+    <section class="banners">
+        <button class="arrow-slider arrow-slider--left" data-banner="btn-previous"></button>
+        <button class="arrow-slider arrow-slider--right" data-banner="btn-next"></button>
+        
+        <div class="controls-slider">
+            {% for banner in banners %}
+                <button class="controls-slider__item" data-banner="btn-control"></button>
+            {% endfor %}
+        </div>
+        
+        
+        <div class="banner-slider" data-banner="slider">
+            {% for banner in banners %}
+                <div class="banner-slider__item" data-banner="item">
+                    {% if banner.tipo_item == 'Filme' %}
+                        <a href="{% url 'movie_detail' banner.filme.id %}" class="banner-slider__link">
+                    {% elif banner.tipo_item == 'Serie' %}
+                        <a href="{% url 'serie_detail' banner.serie.id %}" class="banner-slider__link">
+                    {% endif %}
+                        <img class="banner-slider__cover" src="{{ banner.imagem_banner.url }}" alt="{{ banner.title }}" data-banner="img-title" />
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+
+    <section class="categories">
+        
+
+        
+        <ul class="category-menu">
+            
+            <li class="category-menu__item">
+                <video class="category-menu__video" src="{% static 'assets/videos/category-disney.mp4' %}" autoplay loop muted></video>
+                <a class="category-menu__link" href="/">
+                    <img class="category-menu__img" src="{% static 'assets/imgs/categories/disney.png' %}" alt="Disney Logo" />
+                </a>
+            </li>
+            <li class="category-menu__item">
+                <video class="category-menu__video" src="{% static 'assets/videos/category-pixar.mp4' %}" autoplay loop muted></video>
+                <a class="category-menu__link" href="/">
+                    <img class="category-menu__img" src="{% static 'assets/imgs/categories/pixar.png' %}" alt="Pixar Logo" />
+                </a>
+            </li>
+            <li class="category-menu__item">
+                <video class="category-menu__video" src="{% static 'assets/videos/category-marvel.mp4' %}" autoplay loop muted></video>
+                <a class="category-menu__link" href="/">
+                    <img class="category-menu__img" src="{% static 'assets/imgs/categories/marvel.png' %}" alt="Marvel Logo" />
+                </a>
+            </li>
+            <li class="category-menu__item">
+                <video class="category-menu__video" src="{% static 'assets/videos/category-star-wars.mp4' %}" autoplay loop muted></video>
+                <a class="category-menu__link" href="/">
+                    <img class="category-menu__img" src="{% static 'assets/imgs/categories/star-wars.png' %}" alt="Star Wars Logo" />
+                </a>
+            </li>
+            <li class="category-menu__item">
+                <video class="category-menu__video" src="{% static 'assets/videos/category-national-geographic.mp4' %}" autoplay loop muted></video>
+                <a class="category-menu__link" href="/">
+                    <img class="category-menu__img" src="{% static 'assets/imgs/categories/national-geographic.png' %}" alt="National Geographic Logo" />
+                </a>
+            </li>
+
+            
+        </ul>
+        
+        
+
+    </section>
+
+    <section class="collections">
+        
+        <!-- Series -->
+        <div class="collection" data-carousel="collection">
+            <h3 class="collection__title"><a class="titulos-home" href="{% url 'series' %}">Series</a></h3>
+            <div class="movie-carousel">
+                <button class="arrow-slider arrow-slider--left" data-carousel="btn-previous"></button>
+                <button class="arrow-slider arrow-slider--right" data-carousel="btn-next"></button>
+                <ul class="movie-carousel__list" data-carousel="list">
+                    {% for serie in series_completas %}
+                        <li class="movie-carousel__item" data-carousel="item">
+                            <a class="movie-carousel__link" href="{% url 'serie_detail' serie.id %}">
+                                <img class="movie-carousel__cover" src="{{ serie.image_thumb.url }}" alt="Capa do filme Movie Exemplo" />
+                            </a>
+                        </li>
+                    {% endfor %}
+                    
+                    <li class="movie-carousel__item " data-carousel="item">
+                        <a class="movie-carousel__link back" href="{% url 'series' %}">
+                            <img class="category-menu__img" src="{% static 'assets/imgs/categories/ver-tudo.png' %}" alt="Ver tudo" />
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+        <!-- Series em Desenho -->
+        <div class="collection" data-carousel="collection">
+            <h3 class="collection__title"><a class="titulos-home" href="{% url 'desenhos_series' %}">Series em Desenho</a></h3>
+            <div class="movie-carousel">
+                <button class="arrow-slider arrow-slider--left" data-carousel="btn-previous"></button>
+                <button class="arrow-slider arrow-slider--right" data-carousel="btn-next"></button>
+                <ul class="movie-carousel__list" data-carousel="list">
+
+                    {% for desenho in desenhos_series_completos %}
+                        <li class="movie-carousel__item" data-carousel="item">
+                            <a class="movie-carousel__link" href="{% url 'serie_detail' desenho.id %}">
+                                <img class="movie-carousel__cover" src="{{ desenho.image_thumb.url }}" alt="Capa do filme Movie Exemplo" />
+                            </a>
+                        </li>
+                    {% endfor %}
+                    
+                    <li class="movie-carousel__item " data-carousel="item">
+                        <a class="movie-carousel__link back" href="{% url 'desenhos_series' %}">
+                            <img class="category-menu__img" src="{% static 'assets/imgs/categories/ver-tudo.png' %}" alt="Ver tudo" />
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+        
+        <!-- Filmes -->
+        <div class="collection" data-carousel="collection">
+            <h3 class="collection__title"><a class="titulos-home" href="{% url 'filmes' %}">Filmes</a></h3>
+            <div class="movie-carousel">
+                <button class="arrow-slider arrow-slider--left" data-carousel="btn-previous"></button>
+                <button class="arrow-slider arrow-slider--right" data-carousel="btn-next"></button>
+                <ul class="movie-carousel__list" data-carousel="list">
+                    {% for filme in filmes_completos %}
+                        <li class="movie-carousel__item" data-carousel="item">
+                            <a class="movie-carousel__link" href="{% url 'movie_detail' filme.id %}">
+                                <img class="movie-carousel__cover" src="{{ filme.image_thumb.url }}" alt="Capa do filme Movie Exemplo" />
+                            </a>
+                        </li>
+                    {% endfor %}
+                    
+                    <li class="movie-carousel__item " data-carousel="item">
+                        <a class="movie-carousel__link back" href="{% url 'filmes' %}">
+                            <img class="category-menu__img" src="{% static 'assets/imgs/categories/ver-tudo.png' %}" alt="Ver tudo" />
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+        <!-- Filmes em Desenho -->
+        <div class="collection" data-carousel="collection">
+            <h3 class="collection__title"><a class="titulos-home" href="{% url 'desenhos_filmes' %}">Filmes em Desenho</a></h3>
+            <div class="movie-carousel">
+                <button class="arrow-slider arrow-slider--left" data-carousel="btn-previous"></button>
+                <button class="arrow-slider arrow-slider--right" data-carousel="btn-next"></button>
+                <ul class="movie-carousel__list" data-carousel="list">
+                    {% for desenho in desenhos_completos %}
+                        <li class="movie-carousel__item" data-carousel="item">
+                            <a class="movie-carousel__link" href="{% url 'movie_detail' desenho.id %}">
+                                <img class="movie-carousel__cover" src="{{ desenho.image_thumb.url }}" alt="Capa do desenho Movie Exemplo" />
+                            </a>
+                        </li>
+                    {% endfor %}
+                    
+                    <li class="movie-carousel__item " data-carousel="item">
+                        <a class="movie-carousel__link back" href="{% url 'desenhos_filmes' %}">
+                            <img class="category-menu__img" src="{% static 'assets/imgs/categories/ver-tudo.png' %}" alt="Ver tudo" />
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+
+        <!-- Filmes e Series -->
+        <div class="collection" data-carousel="collection">
+            <h3 class="collection__title"><a class="titulos-home" href="{% url 'movies_series' %}">Filmes e Series</a></h3>
+            <div class="movie-carousel">
+                <button class="arrow-slider arrow-slider--left" data-carousel="btn-previous"></button>
+                <button class="arrow-slider arrow-slider--right" data-carousel="btn-next"></button>
+                <ul class="movie-carousel__list" data-carousel="list">
+                    {% for item in resultados_combinados %}
+                        <li class="movie-carousel__item" data-carousel="item">
+                            {% if item.type == 'serie' %}
+                                
+                                <a class="movie-carousel__link" href="{% url 'serie_detail' item.id %}">
+                                    <img class="movie-carousel__cover" src="{{ item.image_thumb.url }}" alt="Capa da série {{ item.name_serie }}" />
+                                </a>
+
+                            {% elif item.type == 'filme' %}
+
+                                <a class="movie-carousel__link" href="{% url 'movie_detail' item.id %}">
+                                    <img class="movie-carousel__cover" src="{{ item.image_thumb.url }}" alt="Capa do filme {{ item.name_movie }}" />
+                                </a>
+
+                            {% elif item.type == 'desenho_filme' %}
+                                
+                                <a class="movie-carousel__link" href="{% url 'movie_detail' item.id %}">
+                                    <img class="movie-carousel__cover" src="{{ item.image_thumb.url }}" alt="Capa do filme {{ item.name_movie }}" />
+                                </a>
+
+                            {% elif item.type == 'desenho_serie' %}
+                                <a class="movie-carousel__link" href="{% url 'serie_detail' item.id %}">
+                                    <img class="movie-carousel__cover" src="{{ item.image_thumb.url }}" alt="Capa da série {{ item.name_serie }}" />
+                                </a>
+                            {% endif %}
+
+                        </li>
+                    {% endfor %}
+                    
+                    <li class="movie-carousel__item " data-carousel="item">
+                        <a class="movie-carousel__link back" href="{% url 'movies_series' %}">
+                            <img class="category-menu__img" src="{% static 'assets/imgs/categories/ver-tudo.png' %}" alt="Ver tudo" />
+                        </a>
+                    </li>   
+
+                </ul>
+            </div>
+        </div>
+
+
+        <!-- Generos -->
+        {% for genero, series_e_filmes in series_e_filmes_por_genero.items %}
+            <div class="collection" data-carousel="collection">
+                <h3 class="collection__title"><a class="titulos-home" href="{% url 'movies_series_by_genero_home' genero  %}">{{ genero }}</a></h3>
+                <div class="movie-carousel">
+                    <button class="arrow-slider arrow-slider--left" data-carousel="btn-previous"></button>
+                    <button class="arrow-slider arrow-slider--right" data-carousel="btn-next"></button>
+                    <ul class="movie-carousel__list" data-carousel="list">
+                        {% for item in series_e_filmes %}
+                            <li class="movie-carousel__item" data-carousel="item">
+                                {% if item.type == 'serie' %}
+                                    <a class="movie-carousel__link" href="{% url 'serie_detail' item.id %}">
+                                        <img class="movie-carousel__cover" src="{{ item.image_thumb.url }}" alt="Capa da série {{ item.name_serie }}" />
+                                    </a>
+                                    <!-- Adicione mais informações específicas da série se necessário -->
+                                {% elif item.type == 'filme' %}
+                                    <a class="movie-carousel__link" href="{% url 'movie_detail' item.id %}">
+                                        <img class="movie-carousel__cover" src="{{ item.image_thumb.url }}" alt="Capa do filme {{ item.name_movie }}" />
+                                    </a>
+                                    <!-- Adicione mais informações específicas do filme se necessário -->
+                                {% elif item.type == 'desenho_filme' %}
+                                
+                                    <a class="movie-carousel__link" href="{% url 'movie_detail' item.id %}">
+                                        <img class="movie-carousel__cover" src="{{ item.image_thumb.url }}" alt="Capa do filme {{ item.name_movie }}" />
+                                    </a>
+    
+                                {% elif item.type == 'desenho_serie' %}
+                                    <a class="movie-carousel__link" href="{% url 'serie_detail' item.id %}">
+                                        <img class="movie-carousel__cover" src="{{ item.image_thumb.url }}" alt="Capa da série {{ item.name_serie }}" />
+                                    </a>
+
+                                {% endif %}
+                                
+                            </li>
+                        {% endfor %}
+
+                        <li class="movie-carousel__item " data-carousel="item">
+                            <a class="movie-carousel__link back" href="{% url 'movies_series_by_genero_home' genero  %}">
+                                <img class="category-menu__img" src="{% static 'assets/imgs/categories/ver-tudo.png' %}" alt="Ver tudo" />
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        {% endfor %}
+
+       
+
+
+    </section>
+</main>
+
+
+
+
+
+{% endblock %}

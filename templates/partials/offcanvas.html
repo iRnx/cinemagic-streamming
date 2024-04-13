@@ -1,0 +1,74 @@
+<div class="offcanvas offcanvas-start bg-dark" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+
+    <div class="offcanvas-header">
+
+        <!-- <div class="logoh">
+            <a class="logo__link" href="{% url 'home' %}"></a>
+        </div> -->
+
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+
+    <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <!-- <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li> -->
+        
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Series
+                </a>
+                
+                <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
+                    {% for letter in "ABCDEFGHIJKLMNOPQRSTUVWXYZ" %}
+                        <li>
+                            <a class="dropdown-item" href="{% url 'series_letter_'|add:letter %}">Letra - {{ letter }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Filmes
+                </a>
+                
+                <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
+                    <ul>
+                        {% for genre in genres %}
+                            <li><a class="dropdown-item" href="{% url 'movies_by_genre' genre %}">{{ genre|title }}</a></li>
+                        {% endfor %}
+                    </ul>
+                    
+                </ul>
+            </li>
+
+            
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Coleções
+                </a>
+                
+                <!-- <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
+                    <li><a class="dropdown-item" href="#">Coleção Marvel</a></li>
+                    <li><a class="dropdown-item" href="#">Coleção DC</a></li>
+                    <li><a class="dropdown-item" href="#">Coleção Scooby Doo</a></li>
+                    <li><a class="dropdown-item" href="#">Coleção Harry Potter</a></li>
+                </ul> -->
+
+                <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
+                    {% for collection in collections %}
+                        <li><a class="dropdown-item" href="{% url 'collection_all' collection %}">Coleção {{ collection }}</a></li>
+                    {% endfor %}
+                </ul>
+            </li>
+
+
+        </ul>
+    </div>
+</div>

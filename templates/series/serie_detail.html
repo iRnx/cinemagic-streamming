@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block 'body' %}
+
+  <section id="center" class="center_home">
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="{{ serie.image_detail.url }}" class="imagem-full" alt="...">
+          
+          <div class="carousel-caption d-md-block">
+            <h1 class="font_60">{{ serie.name_serie }}</h1>
+            <h6 class="stars">
+              <span class="col_roxo">
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-half"></i>
+              </span>
+              4.5 (Imdb)      Year : 2022
+              <a class="bg_red p-2 pe-4 ps-4 ms-3 text-white d-inline-block" href="#">Action</a>
+            </h6>
+            <p class="mt-4 p_detail">sdg sdg sdg  gsd dsg sdgsdg sdgsdgsd Four waves of increasingly deadly alien attacks have left most of Earth in ruin. Cassie is on the run, desperately trying to save her younger brother.</p>
+            <p class="mb-2 p_detail" ><span class="col_roxo me-1 fw-bold">Starring:</span> Eget Nulla Semper Porta Dapibus Diam Ipsum</p>
+            <p class="mb-2 p_detail"><span class="col_roxo me-1 fw-bold">Genres:</span> Terror</p>
+            <p class="p_detail"><span class="col_roxo me-1 fw-bold">Runtime:</span> 42 min</p>	
+          
+            <div class="text-center select">
+              <select name="temporada"  hx-get="{% url 'return_episode_card_htmx' %}" hx-trigger="load delay:200ms, change delay:200ms" hx-target="#search-results">
+                {% for temporada in serie.temporada_set.all %}
+                  <option value="{{ temporada.id }}">Temporada {{ temporada.season_number }}</option>
+                {% endfor %}
+              </select>
+            </div>
+
+            <div id="search-results">
+              {% include 'partials/return_episode_card_htmx.html' %}
+            </div>
+            
+          </div>
+        
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+{% endblock %}
+
+
+

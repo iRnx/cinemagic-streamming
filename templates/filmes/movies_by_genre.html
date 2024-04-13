@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block 'body' %}
+
+<div id="series-list" class="container justify-content-center align-items-center ">
+  <div class="text-center">
+    <h1 class="texto">Filmes encontrados - "{{ total_filmes }}"</h1>
+      <div class="row" style="margin-top: 200px;">
+        {% for filme in paginated_content %}
+            <div class="movie__item col-4" id="search-results" data-carousel="item">
+                <a class="movie-carousel__link" href="{% url 'movie_detail' filme.id %}">
+                    <img class="movie-carousel__cover" src="{{ filme.image_thumb.url }}" alt="Capa do filme Movie Exemplo" />
+                </a>
+                <br>
+                <br>
+                <h3>{{ filme.name_movie }}</h3>
+              </div>
+        {% endfor %}
+        
+      </div>
+      
+      </div>
+  </div>
+
+  {% include 'partials/pagination.html' %}
+
+
+
+</div>
+
+
+
+
+
+{% endblock %}

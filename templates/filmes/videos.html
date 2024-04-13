@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block 'head' %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
+    <link rel="stylesheet" href="{% static 'assets/css/meu_css/novo_css.css' %}" />
+
+    <style>
+        body {
+            background-color: rgb(63, 63, 63) !important;
+        }
+
+        /* CSS personalizado para aumentar o tamanho dos botões */
+    .btn-custom-size {
+        padding: 12px 24px; /* Ajuste o preenchimento conforme necessário para o tamanho desejado */
+        font-size: 2.5rem !important; /* Ajuste o tamanho da fonte conforme necessário */
+    }
+    </style>
+
+{% endblock %}
+
+
+{% block 'body' %}
+    
+
+    <div class="container">
+        
+        <div class="text-center mb-4">
+            <h1>{{ movie }}</h1>
+        </div>
+
+        <div class="container_video show-controls">
+            <div class="wrapper_video">
+                <div class="video-timeline">
+                    <div class="progress-area">
+                        <span>00:00</span>
+                        <div class="progress-bar"></div>
+                    </div>
+                </div>
+                <ul class="video-controls">
+                    <li class="options left">
+                        <button class="volume"><i class="fa-solid fa-volume-high"></i></button>
+                        <input  type="range" min="0" max="1" step="any">
+                        <div class="video-timer">
+                            <p class="current-time">00:00</p>
+                            <p class="separator"> / </p>
+                            <p class="video-duration">00:00</p>
+                        </div>
+                    </li>
+                    <i class=""></i>
+                    <li class="options center">
+                        <button class="skip-backward"><span class="icone_back">&#xe900;</span></button>
+
+                        <!-- <button class="skip-backward" title="Retroceder 15 segundos"><i class="fa-solid fa-rotate-left"></i></button> -->
+                        
+                        <button class="play-pause"><i class="fas fa-play"></i></button>
+                        <!-- <button class="skip-forward" title="Avançar 15 segundos"><i class="fa-solid fa-rotate-right"></i></button> -->
+                        
+                        <button class="skip-forward"><span class="icone_next">&#xe901;</span></button>
+
+                    </li>
+                    <li class="options right">
+                        <div class="playback-content">
+                            <button class="playback-speed"><span class="material-symbols-rounded">slow_motion_video</span></button>
+                            <ul class="speed-options">
+                                <li data-speed="2">2x</li>
+                                <li data-speed="1.75">1.75x</li>
+                                <li data-speed="1.5">1.5x</li>
+                                <li data-speed="1" class="active">Normal</li>
+                                <li data-speed="0.75">0.75x</li>
+                                <li data-speed="0.5">0.5x</li>
+                            </ul>
+                        </div>
+                        <button class="pic-in-pic"><span class="material-icons">picture_in_picture_alt</span></button>
+                        <button class="fullscreen"><i class="fa-solid fa-expand"></i></button>
+                        
+                    </li>
+                </ul>
+            </div>
+            
+
+            <video>
+                <source src="{{ video.video.url }}" preload="metadata" type="video/webm" />
+            </video>
+
+        </div>
+
+    </div>
+    
+    
+
+    
+
+    
+{% endblock %}
+    

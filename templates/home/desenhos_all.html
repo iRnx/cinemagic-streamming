@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block 'body' %}
+
+<div id="series-list" class="container justify-content-center align-items-center ">
+    <div class="text-center">
+        <h1 class="texto">
+            
+                Desenhos encontrados - "{{ total_desenhos }}"
+        </h1>
+        <div class="row" style="margin-top: 200px;">
+            {% for item in paginated_content %}
+                {% if item.type == 'desenho_filme' %}
+                    <div class="movie__item col-4" id="search-results" data-carousel="item">
+                        <a class="movie-carousel__link" href="{% url 'movie_detail' item.id %}">
+                            <img class="movie-carousel__cover" src="{{ item.image_thumb.url }}" alt="Capa do filme Movie Exemplo" />
+                        </a>
+                        
+                        <h3 class="mt-5">{{ item.name_movie }}</h3>
+                    </div>
+
+                {% elif item.type == 'desenho_serie' %}
+                    <div class="movie__item col-4" id="search-results" data-carousel="item">
+                        <a class="movie-carousel__link" href="{% url 'serie_detail' item.id %}">
+                            <img class="movie-carousel__cover" src="{{ item.image_thumb.url }}" alt="Capa do filme Movie Exemplo" />
+                        </a>
+                        
+                        <h3 class="mt-5">{{ item.name_serie }}</h3>
+                    </div>
+                {% endif %}
+            {% endfor %}
+            
+        </div>
+        
+    </div>
+  
+  
+  {% include 'partials/pagination.html' %}
+
+</div>
+
+{% endblock %}
