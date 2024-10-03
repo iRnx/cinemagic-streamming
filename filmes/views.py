@@ -21,8 +21,7 @@ def movie_detail(request, filme_id):
 
 def movie_video(request, id):
     movie = get_object_or_404(Filme, id=id)
-    video = FilmeVideo.objects.filter(movie=movie).first()
-    return render(request, 'filmes/videos.html', {'video': video, 'movie': movie})
+    return render(request, 'filmes/videos.html', {'movie': movie})
 
 
 

@@ -1,0 +1,79 @@
+/* .form-select-lg {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 1rem;
+    font-size: 1.7rem;
+    border-radius: var(--bs-border-radius-lg);
+    color: rgb(108, 108, 119);
+} */
+
+ 
+select {
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    -ms-appearance:none;
+    appearance:none;
+    outline:0;
+    box-shadow:none;
+    border:0!important;
+    background: #ffffff;
+    background-image: none;
+    flex: 1;
+    padding: 0 1.8em;
+    color:#000000;
+    cursor:pointer;
+    font-size: 1.5em;
+    font-family: 'Open Sans', sans-serif;
+    /* border-radius: 15px; */
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+.select {
+    position: relative;
+    display: flex;
+    width: 15%;
+    height: 4.5em;
+    line-height: 3;
+    /* background: #5c6664; */
+    overflow: hidden;
+    /* border-radius: 1.45em; */
+    margin-bottom: 2.5rem;
+    
+}
+
+.select::after {
+    content: '\25BC';
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: .68em 2.5em;
+    background: #5b14a9;
+    cursor:pointer;
+    pointer-events:none;
+    transition:.25s all ease;
+    height: 4.5em;
+}
+
+.select:hover::after {
+    color: #c9c9c9;
+}
+
+/* option {
+    background: rgb(19, 19, 19) !important;
+    color: rgb(255, 255, 255);
+    border: none;
+    padding: 50px;
+} */
+
+
+
+
+
+  
+  
+  
+  
+  

@@ -16,6 +16,7 @@ class Filme(models.Model):
     genre = models.ManyToManyField(Genero)
     type = models.CharField(max_length=13, choices=TypeChoices.choices)
     collection = models.ForeignKey(Collections, on_delete=models.CASCADE, blank=True, null=True)
+    hls_url = models.URLField(blank=True) # O campo para a URL do HLS
     active = models.BooleanField(default=True)
 
     def __str__(self) -> str:
@@ -24,7 +25,7 @@ class Filme(models.Model):
 
 class FilmeVideo(models.Model):
     movie = models.ForeignKey(Filme, on_delete=models.CASCADE)
-    video = models.FileField(upload_to='videos/filmes')
+    file = models.FileField(upload_to='videos/movies')
     
 
     def __str__(self) -> str:

@@ -1,0 +1,37 @@
+.nav-menu {
+    display: flex;
+    list-style: none;
+    padding: 0;
+}
+
+.nav-menu__item {
+    margin-right: 10px;
+}
+
+/* Estilo do input */
+#campo-pesquisa {
+    display: flex;
+    align-items: center;
+}
+
+#campo-pesquisa input {
+    margin-left: 5px;
+    padding: 5px;
+    color: aliceblue;
+    border: none; /* Remove todas as bordas */
+    border-radius: 0; /* Remove o arredondamento das bordas */
+    border-bottom: 1px solid #ccc; /* Adiciona a borda apenas na parte inferior */
+    background-color: transparent; /* Define o fundo como transparente */
+    outline: none; /* Remove a borda ao receber foco */
+    font-size: 1.8rem;
+    
+}
+
+
+
+
+
+
+
+
+

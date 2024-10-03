@@ -1,0 +1,42 @@
+html {
+    font-size: 62.5%;
+    
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    background: rgb(0,0,0);
+    /* background: linear-gradient(146deg, rgba(0,0,0,1) 16%, rgba(74,0,88,1) 77%, rgba(69,0,117,1) 100%); */
+    /* background: linear-gradient(148deg, rgba(0,0,0,1) 9%, rgba(38,0,45,1) 35%, rgba(45,9,54,1) 45%, rgba(29,2,36,1) 86%); */
+    /* background: linear-gradient(148deg, rgba(0,0,0,1) 9%, rgba(38,0,45,1) 35%, rgba(48,12,56,1) 62%, rgba(16,1,20,1) 87%); */
+    /* background: linear-gradient(148deg, rgba(0,0,0,1) 9%, rgba(38,0,45,1) 35%, rgba(38,3,46,1) 53%, rgba(20,1,25,1) 71%); */
+    /* Outras propriedades de estilo */
+    width: 100%;
+    
+
+}
+
+/* ol, ul {
+    padding-left: 0 !important;
+} */
+
+/* .background-fixed {
+    background: url('../../imgs/background.png') no-repeat;
+    background-size: cover;
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    z-index: 1;
+} */
+
+
+
+/* .wrapper {
+    position: relative;
+    z-index: 2;
+} */
+
+*::selection {
+    background-color: #5b14a9;
+}

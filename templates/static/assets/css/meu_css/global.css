@@ -1,0 +1,30 @@
+/* body{
+  font-family: 'Rajdhani', sans-serif;
+} */
+
+a {
+  text-decoration:none;
+}
+
+.button{
+  background: #5b14a9;
+  color:#fff;
+  padding:10px 20px;
+  display: inline-block;
+  transition: 0.3s;
+  border-radius: 20px;
+}
+
+.button:hover{
+  background: #18062c;
+  color: #fff;
+}
+
+.col_roxo{
+  color: #5b14a9;
+}
+
+.bg_red{
+  background: #5b14a9;
+  border-radius: 20px;
+}
